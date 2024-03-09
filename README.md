@@ -1,4 +1,4 @@
 # html-template-24
-# psd to html
-# only- Desktop mode (Coming responsive for any device)
+# figma to html
+# Responsive ( Desktop / Mobile)
 # Designed by- Anwarul Islam Anik
