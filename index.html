@@ -15,7 +15,6 @@ html{
 background-color:#ddd;
 }
 body{
-width:1100px;
 font-family: 'Urbanist';
 margin:0 auto;
 padding:0 0 0 0;
@@ -23,6 +22,17 @@ padding:0 0 0 0;
 a{
 text-decoration:none
 }
+
+/*Teblet-Responsible-Mode*/
+@media only screen and (min-width:600px){
+body{
+width:1110px;
+}
+
+
+}
+
+
 </style>
 </head>
 
@@ -47,6 +57,16 @@ list-style-type:none;
 float:right;
 line-height:72px;
 }
+.nav .nav-toggle{
+padding:0px;
+color:#fff;
+font-size:0px;
+font-weight:200;
+cursor:pointer;
+}
+.nav .nav-toggle:hover{
+color:red;
+}
 .nav .site-title{
 padding:0 0;
 display:block;
@@ -63,10 +83,11 @@ font-weight:700;
 .nav .get-start{
 background:#BCEC00;
 color:#000;
-padding:10px;
+padding:5px;
 border-radius:15px;
 transition:.2s;
 }
+
 .nav .get-start:hover{
 background:red;
 color:#fff;
@@ -81,14 +102,14 @@ list-style-type: none;
   height:72px;
 }
 
-ul li{
+.nav ul li{
   float: left;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-li a, .dropbtn {
+.nav li a, .dropbtn {
   display: inline-block;
   color: white;
   text-align: center;
@@ -99,11 +120,11 @@ li a, .dropbtn {
   
 }
 
-li a:hover, .dropdown:hover .dropbtn {
+.nav li a:hover, .dropdown:hover .dropbtn {
   background-color: red;
 }
 
-.dropdown-content {
+.nav .dropdown-content {
   display: none;
   position: absolute;
   top:72px;
@@ -115,7 +136,7 @@ li a:hover, .dropdown:hover .dropbtn {
 
 }
 
-.dropdown-content a.link {
+.nav .dropdown-content a.link {
 font-size:15px;
 line-height:15px;
   color: black;
@@ -125,47 +146,186 @@ line-height:15px;
   text-align: left;
   border-bottom:.5px solid #ddd;
 }
-.dropdown-content a.link:last-child {
+.nav .dropdown-content a.link:last-child {
   border-bottom:0px solid #ccc;
 }
-.dropdown-content a.link:hover {
+.nav .dropdown-content a.link:hover {
 background-color: #f1f1f1;
 }
 
-.dropdown:hover > .dropdown-content {
+.nav .dropdown:hover > .dropdown-content {
   display: block;
 }
 
-.dropdown-icon {
+.nav .dropdown-icon {
   font-size: 20px;
   transition: .5s;
 }
-.dropdown:hover .dropdown-icon {
+.nav .dropdown:hover .dropdown-icon {
   transform: rotate(180deg);
 }
 
-</style>
+#mobile-sidenav{
+position:fixed;
+width:0px;
+height:100%;
+top:0;
+left:0;
+z-index:1;
+overflow-x:hidden;
+transition: 0.3s;
+background:#11162c;
+color:#fff;
 
+}
+#mobile-sidenav .close{
+position:absolute;
+top:5px;
+right:5px;
+color:#fff;
+font-size:35px
+}
+
+#mobile-sidenav ul{
+padding:0 0;
+}
+
+#mobile-sidenav ul li{
+  display: block;
+}
+
+#mobile-sidenav li a, #mobile-sidenav .dropbtn {
+  display: block;
+  color: white;
+  text-align:left;
+  padding: 8px 10px;
+  text-decoration: none;
+  font-size:18px;
+  transition:.2s;
+  border-bottom:0.1px solid #363b5a;
+  
+}
+
+#mobile-sidenav li a:hover, #mobile-sidenav .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+#mobile-sidenav .dropdown-content {
+  box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.2);
+  padding-left:10px;
+  background:#182139;
+}
+
+#mobile-sidenav .dropdown-content a.link {
+font-size:15px;
+line-height:15px;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+   border-bottom:0.1px solid #363b5a;
+  background:#182139;
+  color:#fff
+  }
+#mobile-sidenav .dropdown-content a.link:last-child {
+  border-bottom:0px solid #ccc;
+}
+#mobile-sidenav .dropdown-content a.link:hover {
+background-color:red;
+}
+
+
+
+
+/*Mobile-Responsible-Mode*/
+@media only screen and (max-width:599px){
+.nav{
+padding: 0 15px;
+}
+.nav .nav-toggle{
+margin-left:15px;
+padding:5px;
+color:#fff;
+font-size:25px
+}
+.nav ul{
+display:none;
+list-style-type: none;
+
+}
+
+
+
+
+}
+
+/*Teblet-Responsible-Mode*/
+@media only screen and (min-width:600px){
+#mobile-sidenav{
+width:0px;
+}
+
+
+}
+
+/*Desktop-Responsible-Mode*/
+@media only screen and (min-width:768px){
+
+#mobile-sidenav{
+width:0px;
+}
+
+}
+
+
+
+</style>
+<div id="mobile-sidenav">
+<a class="close" onclick="closeNav()">&times;</a>
+<div style="margin-top:20px;padding:10px;font-size:25px;font-weight:700">
+Parvez IT
+</div>
+<ul id="nav-list"></ul>
+</div>
 <div class="nav">
   <div class="nav-left"><a class="site-title" href="#home">Parvez IT</a></div>
-  <div class="nav-right"><a href="" class="get-start">Get Stared! <li class="fa fa-long-arrow-right"></li></a></div>
-<ul>
+  <div class="nav-right"><a href="" class="get-start">Get Stared! <li class="fa fa-long-arrow-right"></li></a><font class="nav-toggle" onclick="openNav()"><li class="fa fa-navicon"></li></font></div>
+  
+<ul id="nav-ul">
 
   <li><a href="#home">Home</a></li>
   <li><a href="#about">About Us</a></li>
   <li class="dropdown">
     <a href="javascript:void(0)" class="dropbtn">Services <span class="bx bx-chevron-down dropdown-icon"></span></a>
     <div class="dropdown-content">
-      <a class="link" href="">Link 1</a>
-      <a class="link" href="">Link 1</a>
-      <a class="link" href="">Link 1</a>
+      <a class="link" href="">Sub Link 1</a>
+      <a class="link" href="">Sub Link 2</a>
+      <a class="link" href="">Sub Link 3</a>
 
     </div>
   </li>
     <li><a href="#whyus">Why Us?</a></li>
           <li><a href="#contact">Contact Us</a></li>
 </ul>
+
+
 </div>
+<script>
+document.getElementById("mobile-sidenav").style.width= "0px";
+document.getElementById("nav-list").innerHTML = document.getElementById("nav-ul").innerHTML;
+function openNav(){
+var bb = document.getElementById("mobile-sidenav").style.width;
+if(bb.match("0px")){
+document.getElementById("mobile-sidenav").style.width= "251px";
+}else{
+document.getElementById("mobile-sidenav").style.width= "0px";
+}
+}
+function closeNav(){
+document.getElementById("mobile-sidenav").style.width= "0px";
+}
+</script>
+
 <!--nav-area-end-->
 
 <!--box1-area-start-->
@@ -227,6 +387,58 @@ color:#908E8E;
 font-family:Be Vietnam Pro;
 margin:12px
 }
+
+
+
+/*Mobile-Responsible-Mode*/
+@media only screen and (max-width:599px){
+.box1{
+padding:10px 15px;
+background-size:90px;
+}
+.box1 .title{
+font-size:22px;
+line-height:30px;
+font-weight:700;
+margin: 7px 0px
+}
+.box1 .sub-title{
+font-size:12px;
+line-height:15px;
+font-weight:400;
+}
+.box1 .go-button{
+margin-left:60px;
+padding:10px 15px;
+font-size:12px;
+
+}
+.box1 img.check-site{
+width:30px;
+height:30px;
+margin:0 15px
+}
+.box1 .bottom-text{
+font-size:12px;
+line-height:15px;
+margin:5px 12px;
+}
+
+}
+
+/*Teblet-Responsible-Mode*/
+@media only screen and (min-width:600px){
+
+
+
+}
+
+/*Desktop-Responsible-Mode*/
+@media only screen and (min-width:768px){
+
+
+
+}
 </style>
 
 <div class="box1">
@@ -238,7 +450,7 @@ Unlock The Power Of Link Building To Skyrocket Your ROI
 Discover the full potential of your online business with our premium backlinks, guaranteed <br>to generate maximum ROI and drive targeted traffic to your website.
 </div>
 <div>
-<br>
+
 <a href="" class="go-button">Check Our Site List <li class="fa fa-long-arrow-right"></li></a><img class="check-site" src="img/Vector.png"/></a>
 </div>
 <div class="bottom-text">
@@ -255,7 +467,8 @@ We start posting in 15min.
   display: grid;
   grid-template-columns: auto auto;
   background-color: #fff;
-  padding: 30px 70px;
+  padding: 20px 50px;
+  border-bottom: 1px solid #ccc;
 }
 .box-item {
   background-color: rgba(255, 255, 255, 0.8);
@@ -264,10 +477,10 @@ We start posting in 15min.
   text-align: ;
   margin: 0px;
   border-radius: 0px;
-	padding:5px;
+  padding:5px;
 }
 
-div.thumb-item {
+.grid-box .thumb-item {
   position: relative;
   width: 300px;
   height: 300px;
@@ -276,11 +489,11 @@ div.thumb-item {
 } 
 .thumb-item-left{
   background:url(img/Vector-4.png) top left no-repeat;
-  background-size:150px;
+  background-size:100px;
 }
 .thumb-item-right{
   background:url(img/Vector-4.png) top right no-repeat;
-  background-size:150px;
+  background-size:100px;
 }
 .thumb-item .thumb-img{
 position:absolute;
@@ -297,13 +510,13 @@ height:250px;
 .thumb-item .count-box{
 background:#fff;
 position:absolute;
+width:68px;
+height:74px;
 right:0;
 bottom:0;
 border:0px solid #333;
-width:68px;
-height:74px;
 font-size:15px;
-border-radius:10px;
+border-radius:7px;
 padding:10px;
 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 text-align:center;
@@ -312,23 +525,26 @@ text-align:center;
 font-size:25px;
 color:#00005C;
 font-weight:600;
-line-height:35px
+line-height:25px
 }
-
+.thumb-item .count-box img{
+width:20px;
+height:20px;
+}
 .box-item .head-title{
 color:#7057f6;
 font-size:15px;
 font-weight:600;
 }
 .box-item .title{
-font-size:38px;
+font-size:35px;
 color:#00005C;
 font-weight:600;
 line-height:50px
 }
 .box-item .sub-title{
 font-size:18px;
-color:gray;
+color:#455476;
 font-weight:400;
 line-height:30px
 }
@@ -344,6 +560,74 @@ transition:.2s;
 background:red;
 color:#fff;
 }
+
+/*Mobile-Responsible-Mode*/
+@media only screen and (max-width:599px){
+.grid-box {
+  padding: 10px 10px;
+}
+
+.grid-box .thumb-item {
+  width: 130px;
+  height: 130px;
+} 
+.thumb-item .thumb-img{
+top:12px;
+left:12px;
+width:100px;
+height:100px;
+}
+.thumb-item .thumb-img img{
+width:100px;
+height:100px;
+}
+
+.thumb-item .count-box{
+width:28px;
+height:34px;
+font-size:10px;
+}
+.thumb-item .count-box img{
+width:15px;
+height:15px;
+}
+.thumb-item .count-box .total-reach{
+font-size:12px;
+font-weight:600;
+line-height:25px
+}
+.box-item .head-title{
+font-size:10px;
+}
+.box-item .title{
+font-size:18px;
+line-height:20px
+}
+
+.box-item .sub-title{
+font-size:12px;
+font-weight:300;
+line-height:15px;
+}
+.box-item .learn-more{
+font-size:12px;
+padding:5px 15px;
+}
+
+/*Teblet-Responsible-Mode*/
+@media only screen and (min-width:600px){
+
+
+
+}
+
+/*Desktop-Responsible-Mode*/
+@media only screen and (min-width:768px){
+
+
+
+}
+
 </style>
 
 </style>
@@ -369,13 +653,12 @@ color:#fff;
   Innovative Strategies for Maximum SEO Impact
   </div>
   <div class="sub-title">
-  We present you a proposal and discuss nitty-gritty like workflows, communication protocols apart from engagement models, pricing, billing and invoicing.
+  We present you a proposal and discuss nitty-gritty like workflows.
 
-  </br></br>
+  </br>
 
   Backed by an experience of nearly two decades in digital marketing.
   </div>
-  </br>
   <a href="" class="learn-more">Learn More</a>
 </div>
  
@@ -460,7 +743,83 @@ font-weight:400;
 line-height:20px
 }
 
-@media screen and (min-width: 410px){
+/*Mobile-Responsible-Mode*/
+@media only screen and (max-width:599px){
+
+.box2 .thumb-box{
+display: grid;
+grid-template-columns: auto auto;
+padding:20px 10px;
+border-bottom:.5px solid #eee;
+}
+.box2 .bg-img{
+position:absolute;
+width:150px;
+height:130px;
+left:0;
+bottom:0px;
+background:url(img/image19-1.png) top left no-repeat;
+background-size:100px;
+}
+
+.thumb-box .title{
+font-size:18px;
+color:#00005C;
+font-weight:600;
+line-height:20px
+}
+
+.thumb-box .sub-title{
+font-size:12px;
+color:gray;
+font-weight:400;
+line-height:20px
+}
+
+.thumb-box .item{
+}
+
+.thumb-box .item .thumb{
+width:120px;
+height:auto;
+}
+
+.box2 .thumb-bottom{
+display: grid;
+grid-template-columns: auto auto auto auto;
+padding:15px 5px;
+text-align:center;
+}
+
+.thumb-bottom .num-title{
+font-size:20px;
+line-height:20px
+}
+
+.thumb-bottom .num-type{
+font-size:20px;
+line-height:25px
+}
+
+.thumb-bottom .sub-title{
+font-size:10px;
+line-height:12px
+}
+
+
+}
+
+/*Teblet-Responsible-Mode*/
+@media only screen and (min-width:600px){
+
+
+
+}
+
+/*Desktop-Responsible-Mode*/
+@media only screen and (min-width:768px){
+
+
 
 }
 </style>
@@ -539,7 +898,7 @@ line-height:25px
 }
 .service-list .item {
   background-color: #fff;
-  border: .5px solid #eee;
+  border: .5px solid #ddd;
   padding: 20px;
   font-size: 30px;
   margin: 5px;
@@ -570,6 +929,66 @@ font-size:18px;
 color:#7057f6;
 font-weight:bold
 }
+
+/*Mobile-Responsible-Mode*/
+@media only screen and (max-width:599px){
+.service-box{
+padding:10px;
+}
+.service-list{
+  display: grid;
+  grid-template-columns: auto;
+  padding: 10px 10px;
+}
+.service-box .header{
+padding:25px 20px 15px 20px;
+}
+.
+.service-list .item {
+  padding: 5px;
+}
+
+.service-box .header .title{
+font-size:15px;
+color:#455476;
+font-weight:400;
+line-height:15px
+}
+
+.service-list .item .title{
+font-size:18px;
+color:#00005C;
+font-weight:600;
+line-height:18px
+}
+
+.service-list .item .sub-title{
+font-size:12px;
+color:#455476;
+font-weight:400;
+line-height:12px
+}
+.service-list .item img {
+height:50px;
+}
+.service-list .item a{
+font-size:12px;
+}
+}
+/*Teblet-Responsible-Mode*/
+@media only screen and (min-width:600px){
+
+
+
+}
+
+/*Desktop-Responsible-Mode*/
+@media only screen and (min-width:768px){
+
+
+
+}
+
 </style>
 
 
@@ -653,7 +1072,7 @@ Lot of hoppy customers we have
 .whyus-box{
   padding:20px 40px;
   background:url(img/Hand.png) center center no-repeat;
-  background-size:100%;
+  background-size:cover;
   background-color:#1d2430;
 }
 
@@ -715,6 +1134,77 @@ font-size:15px;
 color:#b9b9b9;
 font-weight:500;
 line-height:20px
+}
+
+/*Mobile-Responsible-Mode*/
+@media only screen and (max-width:599px){
+.whyus-box{
+  padding:15px 10px;
+  }
+.whyus-box .header{
+padding:30px 20px;
+text-align:center;
+}
+
+.whyus-box .header .title{
+font-size:20px;
+color:#fff;
+font-weight:600;
+line-height:25px
+}
+
+.whyus-box .header .sub-title{
+padding:20px;
+font-size:15px;
+color:#c7c7c7;
+font-weight:400;
+line-height:15px
+}
+
+.whyus-box .list {
+  display: grid;
+  grid-template-columns: auto;
+  }
+  
+.whyus-box .list .item {
+  padding: 5px;
+  }
+.whyus-box .list .item .num-b{
+background:#BCEC00;
+color:#00005c;
+padding:3px;
+border-radius:10px;
+font-size:12px;
+font-weight:700;
+}
+
+.whyus-box .list .item .title{
+font-size:20px;
+font-weight:500;
+line-height:25px
+}
+
+.whyus-box .list .item .sub-title{
+padding:10px 0;
+font-size:15px;
+font-weight:400;
+line-height:20px
+}
+
+
+}
+
+/*Teblet-Responsible-Mode*/
+@media only screen and (min-width:600px){
+
+
+}
+
+/*Desktop-Responsible-Mode*/
+@media only screen and (min-width:768px){
+
+
+
 }
 </style>
 
@@ -871,7 +1361,7 @@ line-height:20px
 <style>
 .testimonial-box{
 background:#f6f6f6;
-padding:45px 70px;
+padding:10px 50px;
 }
  
 .testimonial-box .header{
@@ -1015,13 +1505,15 @@ line-height:40px
 }
 .owl-prev:before,
 .owl-next:before{
-    content: "\f104";
-    font-family: "Font Awesome 5 Free";
+    content: "\0ab";
     font-weight: 900;
     font-size: 25px;
-    color: #ececec;
+    color:#00005C;
 }
-.owl-next:before{ content: "\f105"; }
+.owl-next:before{
+content: "\0bb";
+}
+
 @media only screen and (max-width: 990px){
     .owl-theme .owl-controls,
     .owl-prev,
@@ -1038,6 +1530,34 @@ line-height:40px
     .testimonial .rating{
         right: 12px;
     }
+}
+
+/*Mobile-Responsible-Mode*/
+@media only screen and (max-width:599px){
+.testimonial-box{
+padding:10px 50px;
+}
+.testimonial-box .header .title{
+font-size:30px;
+color:#00005C;
+font-weight:600;
+line-height:40px
+}
+
+}
+
+/*Teblet-Responsible-Mode*/
+@media only screen and (min-width:600px){
+
+
+
+}
+
+/*Desktop-Responsible-Mode*/
+@media only screen and (min-width:768px){
+
+
+
 }
 
 </style>
@@ -1139,26 +1659,6 @@ line-height:40px
             </div>
 </div>
 
-<script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
-<script type="text/javascript" src="js/owl.carousel.min.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
-
-<script> 
-$(document).ready(function(){
-    $("#testimonial-slider").owlCarousel({
-        items:3,
-        itemsDesktop:[1000,2],
-        itemsDesktopSmall:[979,2],
-        itemsTablet:[768,2],
-        itemsMobile:[650,1],
-        pagination:false,
-        navigation:true,
-        navigationText:["",""],
-        autoPlay:true
-    });
-})
-</script>
 <!--testimonial-box-area-end-->
 
 <!--box8-area-start-->
@@ -1198,7 +1698,7 @@ padding:15px 25px;
 border-radius:50px;
 font-size:16px;
 line-height:24px;
-font-weight:700;
+font-weight:500;
 transition:.2s;
 }
 .box8 .go-button:hover{
@@ -1217,6 +1717,53 @@ font-weight:400;
 color:#908E8E;
 font-family:Be Vietnam Pro;
 margin:12px
+}
+
+
+/*Mobile-Responsible-Mode*/
+@media only screen and (max-width:599px){
+.box8{
+padding:30px 10px;
+background:url(/image19-1.png) bottom right no-repeat, url(img/attach.png) top left no-repeat;
+background-size:170px;
+background-color:#0F1E3A;
+
+}
+
+.box8 .title{
+font-size:25px;
+line-height:30px;
+margin: 15px 0px
+}
+
+.box8 .sub-title{
+font-size:20px;
+line-height:20px;
+}
+
+.box8 .go-button{
+padding:8px 12px;
+font-size:12px;
+line-height:24px;
+font-weight:400;
+
+}
+
+
+}
+
+/*Teblet-Responsible-Mode*/
+@media only screen and (min-width:600px){
+
+
+
+}
+
+/*Desktop-Responsible-Mode*/
+@media only screen and (min-width:768px){
+
+
+
 }
 </style>
 
@@ -1251,7 +1798,7 @@ color:#00005C;
 font-weight:600;
 line-height:40px
 }
-.story-list{
+.story-box .story-list{
 display: grid;
 grid-template-columns: auto auto auto;
 background-color:#fff;
@@ -1260,22 +1807,26 @@ padding:10px;
 
 
 .story-list .item{
-margin:5px;
-}
-.story-list .story-thumb{
+padding:10px;
 
 }
+.story-list .story-thumb{
+height:150px;
+width:100%;
+border-radius:15px;
+}
 .story-list .story-thumb img{
-height:140px;
-width:210px;
+height:150px;
+width:100%;
 border-radius:15px;
 background:#333;
 }
 .story-list .time{
-padding:0px 0 0 0;
+padding:0px 0px;
 color:#908e8e;
 font-size:14px;
-font-weight:500;
+font-weight:200;
+line-height:14px;
 }
 .story-list .title{
 font-size:20px;
@@ -1305,7 +1856,65 @@ padding:0 10px;
 color:#212121;
 font-size:14px;
 font-weight:600;
+line-height:35px;
 }
+
+/*Mobile-Responsible-Mode*/
+@media only screen and (max-width:599px){
+.story-box{
+padding:10px 10px;
+}
+.story-box .header .title{
+font-size:30px;
+}
+.story-list .title{
+font-size:18px;
+line-height:25px;
+font-weight:500;
+}
+.story-list .time{
+font-size:10px;
+line-height:10px;
+}
+.story-box .story-list{
+display: grid;
+grid-template-columns: auto;
+
+padding:0px;
+}
+.story-box .story-list .grid{
+padding:5px
+}
+.story-list .story-thumb, .story-list .story-thumb img{
+height:auto;
+width:100px;
+border-radius:5px
+}
+.story-box .story-list .item{
+  display: grid;
+  grid-template-columns: auto auto;
+border-bottom:1px solid #ddd;
+}
+.story-box .story-list .item:last-child{
+border-bottom:0px solid #ccc;
+}
+
+}
+/*Teblet-Responsible-Mode*/
+@media only screen and (min-width:600px){
+
+
+
+}
+
+/*Desktop-Responsible-Mode*/
+@media only screen and (min-width:768px){
+
+
+
+}
+
+
 </style>
 
 
@@ -1315,21 +1924,28 @@ font-weight:600;
 </div>
 <div class="story-list">
 <div class="item">
+<div class="grid">
 <div class="story-thumb">
-<img src="img/Rectangle 5646-1.png"/>
+<img src="img/Rectangle 5646.png"/>
 </div>
+</div>
+<div class="grid">
 <font class="time">Jan 22 2023 <li class="fa fa-clock-o" ria-hidden="true"></li> 11 min read</font>
 <div class="title">Female leader spotlight: Maria Gothlin, Soundtrack Your Brand</div>
 <div class="story-owner">
   <img src="img/image-4.png" alt="Person" width="" height="">
-  <p class="name">Mansur Sami</p>
+  <font class="name">Mansur Sami</font>
+</div>
 </div>
 </div>
 
 <div class="item">
+<div class="grid">
 <div class="story-thumb">
 <img src="img/Rectangle 5646-1.png"/>
 </div>
+</div>
+<div class="grid">
 <font class="time">Jan 22 2023 <li class="fa fa-clock-o" ria-hidden="true"></li> 11 min read</font>
 <div class="title">Female leader spotlight: Maria Gothlin, Soundtrack Your Brand</div>
 <div class="story-owner">
@@ -1337,16 +1953,21 @@ font-weight:600;
   <p class="name">Sajib Rahman</p>
 </div>
 </div>
+</div>
 
 <div class="item">
+<div class="grid">
 <div class="story-thumb">
-<img src="img/Rectangle 5646-1.png"/>
+<img src="img/Rectangle 5646-2.png"/>
 </div>
+</div>
+<div class="grid">
 <font class="time">Jan 22 2023 <li class="fa fa-clock-o" ria-hidden="true"></li> 11 min read</font>
 <div class="title">Female leader spotlight: Maria Gothlin, Soundtrack Your Brand</div>
 <div class="story-owner">
   <img src="img/image-3.png" alt="Person" width="" height="">
   <p class="name">Mahfujul Nabil</p>
+</div>
 </div>
 </div>
 
@@ -1413,6 +2034,32 @@ font-size:16px;
   color:#908e8e;
   border:0px solid #000;
   border-radius :10px
+}
+
+
+/*Mobile-Responsible-Mode*/
+@media only screen and (max-width:599px){
+.ex-menu{
+padding:20px 40px;
+}
+.ex-menu .header .title{
+font-size:30px;
+}
+
+}
+
+/*Teblet-Responsible-Mode*/
+@media only screen and (min-width:600px){
+
+
+
+}
+
+/*Desktop-Responsible-Mode*/
+@media only screen and (min-width:768px){
+
+
+
 }
 
 </style>
@@ -1494,7 +2141,39 @@ margin:0 15px
 font-size:15px;
 color:#908e8e;
 font-weight:400;
-line-height:40px
+line-height:40px;
+}
+
+/*Mobile-Responsible-Mode*/
+@media only screen and (max-width:599px){
+.contact-box{
+padding:40px 10px 10px 10px;
+}
+.contact-box .list-com img{
+height:25px;
+margin:0 5px;
+}
+.contact-box .header .title{
+font-size:15px;
+line-height:20px;
+}
+
+
+}
+
+/*Teblet-Responsible-Mode*/
+@media only screen and (min-width:600px){
+
+
+
+}
+
+/*Desktop-Responsible-Mode*/
+@media only screen and (min-width:768px){
+
+
+
+}
 </style>
 <div class="contact-box">
    <div class="header">
@@ -1524,34 +2203,55 @@ padding:10px 70px;
 .footer-box li{
 list-style:none
 }
-.footer-box .header{
+.footer-box .header {
+overflow: hidden;
 display: grid;
 grid-template-columns: auto auto auto;
 padding:25px 0;
 border-bottom:0.1px solid #363b5a;
 }
+
 .footer-box .header .item{
 font-size:20px;
 font-weight:500;
+display:block;
 }
-.footer-box .item .email-box{
-float:left;
-width:60%;height:100%;line-height:20px;padding:0px 5px;border:0;margin-right:40px;color:gray
+.footer-box .header a:hover {
+background-color: #ddd;
+color: black;
+}
+.footer-box .header .form-container {
+float: right;
 }
 
-.footer-box .item .go{width:30px;
+.footer-box .header .form-container input[type=text] {
+padding: 6px;
+margin-top: 0px;
+font-size: 17px;
+border: none;
+min-width:80px;
+max-width:200px;
+}
 
-height:20px;
-line-height:20px;
-padding:0px;
-border:0;
-margin:0;
-background:url(img/go.png) center -7px no-repeat;
-background-size:40px;
-background-color:#00005c;
+.footer-box .header .form-container button {
+padding: 6px 10px;
+margin-top: 0px;
+margin-right: 16px;
+background: #293965;
 color:#fff;
-border-radius:5px
+font-size: 17px;
+border: none;
+cursor: pointer;
+
 }
+.footer-box .header .form-container button:hover {
+ background: #ccc;
+ color:#00005c;
+ transition: 0.2s;
+}
+
+
+
 
 .footer-box .center{
 display: grid;
@@ -1579,7 +2279,7 @@ display:block;
 }
 
 .footer-box .center .item a.link:before {
-content: '\0bb';
+content: '\203a';
 color:#5f627a;
 margin-right:5px
 }
@@ -1607,22 +2307,73 @@ padding:25px;
 color:#5f627a;
 }
 
+
+/*Mobile-Responsible-Mode*/
+@media only screen and (max-width:599px){
+.footer-box{
+padding:10px 20px;
+}
+.footer-box .header{
+display: grid;
+grid-template-columns: auto auto;
+}
+.footer-box .center{
+display: grid;
+grid-template-columns: auto auto;
+}
+.footer-box .center .item{
+
+}
+.footer-box .center .item .title{
+font-size:18px;
+font-weight:700;
+}
+.footer-box .center .item .link, .footer-box .center .item .link a{
+padding:3px;
+font-size:15px;
+font-weight:400;
+}
+.footer-box .bottom{
+padding:12px;
+font-size:12px;
+}
+
+}
+
+/*Teblet-Responsible-Mode*/
+@media only screen and (min-width:600px){
+
+
+
+}
+
+/*Desktop-Responsible-Mode*/
+@media only screen and (min-width:768px){
+
+
+
+}
+
+
 </style>
 
 <div class="footer-box" id="contact">
-    <div class="header">
-	     <div class="item">
-		 Logo
-		 </div>
-		 <div class="item" align="right">
-		 Subcribe To Our Newsletter
-		 </div>
-	     <div class="item" align="right">
-		 <div style="padding:3px;background:#fff;display:inline-block;border-radius:5px;height:20px;overflow:hidden;">
-		 <input class="email-box" placeholder="Enter your email" type="text"/> <input class="go" type="submit" value=""/>
-		 </div>
-		 </div>
-	</div>
+<div class="header">
+<div class="item">
+  <b>Logo</b>
+  </div>
+  <div class="item" align="right">
+  Subcribe To Our Newsletter
+</div>
+<div class="item">
+  <div class="form-container">
+    <form action="/action_page.php">
+      <input type="text" placeholder="Enter email.." name="search">
+      <button type="submit"><i class="fa fa-send"></i></button>
+    </form>
+  </div>
+</div>
+</div>
 	
     <div class="center">
 	     <div class="item">
@@ -1666,12 +2417,33 @@ color:#5f627a;
 		<li class="fa fa-copyright"></li> 2024 - All Rights Reserved.
 		</div>
 		<div class="item" align="right">
-		<a href="">Privacy Policy</a> . <a href="">Terms of Service</a> . <a href="">Refund Policy</a>
+		<a href="">Privacy Policy</a> . <a href="">Terms of Service</a>
 		</div>
 	</div>
 </div>
 <!--footer-box-area-end-->
 
+
+<script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
+<script type="text/javascript" src="js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+
+<script> 
+$(document).ready(function(){
+    $("#testimonial-slider").owlCarousel({
+        items:3,
+        itemsDesktop:[1000,2],
+        itemsDesktopSmall:[979,2],
+        itemsTablet:[768,2],
+        itemsMobile:[650,1],
+        pagination:false,
+        navigation:true,
+        navigationText:["",""],
+        autoPlay:true
+    });
+})
+</script>
 </body>
 </html>
 
