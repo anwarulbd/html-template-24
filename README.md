@@ -4,4 +4,8 @@
 # Responsive ( Desktop / Tablet / Mobile)
 # Designed by- Anwarul Islam Anik
 <img src="/img/DEVZET TaskJjj.png" width="100%"/>
-<script>alert("Working...");</script>
+<script>
+  function alert2(){
+  alert("Working...");
+  }
+</script>
